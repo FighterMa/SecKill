@@ -43,14 +43,19 @@ public class GoodsController {
     @Autowired
     IMiaoshaUserService iMiaoshaUserService;
 
+//    @RequestMapping("/to_list")
+//    public String to_list(HttpServletResponse response,Model model,
+//                          @CookieValue(value= Constant.COOKIE_NAME_TOKEN,required = false)String cookieToken,
+//                          @RequestParam(value= Constant.COOKIE_NAME_TOKEN,required = false)String paramToken) {
+//        if(org.springframework.util.StringUtils.isEmpty(cookieToken)&&org.springframework.util.StringUtils.isEmpty(paramToken))
+//            return "login";
+//        String token= !org.springframework.util.StringUtils.isEmpty(cookieToken)?cookieToken:paramToken;
+//        MiaoshaUser miaoshaUser=iMiaoshaUserService.getMiaoshaUserByToken(response,token);
+//        model.addAttribute("user",miaoshaUser);
+//        return "goods_list";
+//    }
     @RequestMapping("/to_list")
-    public String to_list(HttpServletResponse response,Model model,
-                          @CookieValue(value= Constant.COOKIE_NAME_TOKEN,required = false)String cookieToken,
-                          @RequestParam(value= Constant.COOKIE_NAME_TOKEN,required = false)String paramToken) {
-        if(org.springframework.util.StringUtils.isEmpty(cookieToken)&&org.springframework.util.StringUtils.isEmpty(paramToken))
-            return "login";
-        String token= !org.springframework.util.StringUtils.isEmpty(cookieToken)?cookieToken:paramToken;
-        MiaoshaUser miaoshaUser=iMiaoshaUserService.getMiaoshaUserByToken(response,token);
+    public String to_list(Model model,MiaoshaUser miaoshaUser) {
         model.addAttribute("user",miaoshaUser);
         return "goods_list";
     }
