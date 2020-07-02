@@ -48,7 +48,9 @@ public class MiaoshaUserService implements IMiaoshaUserService {
         if(!password.equals(miaoshaUser.getPassword())){
             return CodeMsg.PASSWORD_ERROR;
         }
-        addCookie(response,miaoshaUser);
+        //随机生成token
+        String token= UUIDUtil.getUUID();
+        addCookie(response,token,miaoshaUser);
         return CodeMsg.SUCCESS;
     }
 
@@ -58,15 +60,14 @@ public class MiaoshaUserService implements IMiaoshaUserService {
             return null;
         MiaoshaUser miaoshaUser=redisService.get(MiaoshaUserKey.tokenPrefix,token,MiaoshaUser.class);
         if(miaoshaUser!=null) {
-            addCookie(response, miaoshaUser);
+            addCookie(response,token, miaoshaUser);
             return miaoshaUser;
         }
         return null;
     }
 
-    private void addCookie(HttpServletResponse response,MiaoshaUser miaoshaUser){
-        //随机生成token
-        String token= UUIDUtil.getUUID();
+    private void addCookie(HttpServletResponse response,String token,MiaoshaUser miaoshaUser){
+
         redisService.set(MiaoshaUserKey.tokenPrefix,token,miaoshaUser);
         Cookie cookie=new Cookie(Constant.COOKIE_NAME_TOKEN,token);
         cookie.setMaxAge(MiaoshaUserKey.tokenPrefix.getExpireSeconds());

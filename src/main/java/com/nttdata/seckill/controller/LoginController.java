@@ -48,7 +48,6 @@ public class LoginController {
     public ResponseResult<Boolean> do_login(HttpServletResponse response, LoginVO loginVO) {
 
         logger.info(loginVO.toString());
-        System.out.println(loginVO.getMobile()+":"+loginVO.getPassword());
         CodeMsg errValidate=Login(response,loginVO);
 
         if(errValidate.getCode()==0){
