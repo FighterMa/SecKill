@@ -14,6 +14,15 @@ public class OrderInfo {
 	private Integer status;
 	private Date createDate;
 	private Date payDate;
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -68,12 +77,7 @@ public class OrderInfo {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public Date getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+
 	public Date getPayDate() {
 		return payDate;
 	}

@@ -19,7 +19,6 @@ import java.util.List;
 public class GoodsService {
     @Autowired
     GoodsDAO goodsDAO;
-
     /***
      * 取得所有商品
      */
@@ -32,5 +31,9 @@ public class GoodsService {
      */
     public GoodsVo getGoodById(String id){
         return goodsDAO.getGoodById(id);
+    }
+
+    public int reduceGoodsStock(String goodsId){
+        return  goodsDAO.reduceMiaoshaGoodsStock(goodsId)+goodsDAO.reduceGoodsStock(goodsId);
     }
 }

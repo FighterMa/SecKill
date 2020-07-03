@@ -22,10 +22,15 @@ public class CodeMsg {
     public static CodeMsg PASSWORD_LENGTH=new CodeMsg(500103,"密码不能少于六位");
     public static CodeMsg MOBILE_NOTEXISTS=new CodeMsg(500104,"手机号不存在");
     public static CodeMsg PASSWORD_ERROR=new CodeMsg(500105,"密码错误");
+
+    //秒杀异常
+    public static CodeMsg MIAOSHA_STOCKERROR=new CodeMsg(500200,"秒杀已售罄");
+    public static CodeMsg MIAOSHA_REPEAT=new CodeMsg(500201,"你已经秒杀过了,不要贪心哦");
     private CodeMsg(int code, String Msg) {
         this.code=code;
         this.Msg=Msg;
     }
+
 
     public String getMsg() {
         return Msg;

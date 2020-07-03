@@ -4,6 +4,7 @@ import com.nttdata.seckill.VO.GoodsVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -22,4 +23,10 @@ public interface GoodsDAO {
 
     @Select("SELECT goods.*, miaosha_goods.miaosha_price,miaosha_goods.stock_count,miaosha_goods.start_date,miaosha_goods.end_date FROM miaosha_goods left join goods on goods.id=miaosha_goods.goods_id where goods.id=${id}")
     public GoodsVo getGoodById(@Param("id") String id);
+
+    @Update("update goods set goods_stock=goods_stock-1 where id=${goodsId};")
+    public int reduceGoodsStock(@Param("goodsId") String goodsId);
+
+    @Update("update miaosha_goods set stock_count=stock_count-1 where id=${goodsId};")
+    public int reduceMiaoshaGoodsStock(@Param("goodsId") String goodsId);
 }

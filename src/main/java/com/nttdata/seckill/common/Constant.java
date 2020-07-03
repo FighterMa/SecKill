@@ -13,3 +13,5 @@ public class Constant {
     public final static String PasswordSuffix="DATA";
     public final static String COOKIE_NAME_TOKEN="token";
 }
+
+

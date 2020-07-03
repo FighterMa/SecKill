@@ -3,6 +3,7 @@ package com.nttdata.seckill.service;
 import com.nttdata.seckill.VO.LoginVO;
 import com.nttdata.seckill.common.CodeMsg;
 import com.nttdata.seckill.domain.MiaoshaUser;
+import com.nttdata.seckill.domain.OrderInfo;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,4 +19,5 @@ public interface IMiaoshaUserService {
     public MiaoshaUser getMiaoshaUserById(String id);
     public CodeMsg Login(HttpServletResponse response,LoginVO loginVO);
     public MiaoshaUser getMiaoshaUserByToken(HttpServletResponse response,String token);
+
 }
